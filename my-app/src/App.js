@@ -1,23 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Title from './components/Title.jsx'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <Title>
   Kate List
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-
-        >
-
+        </Title>
 <ul>
   <li>milk</li>
   <li>milk</li>
@@ -26,9 +17,6 @@ function App() {
   <li>milk</li>
   <li>milk</li>
 </ul>
-
-        </a>
-      </header>
     </div>
   );
 }
