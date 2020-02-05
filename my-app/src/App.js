@@ -1,60 +1,50 @@
-import React, { useState } from 'react';
-import './App.css';
-import Title from './components/Title'
+import React from 'react'
+import "./App.css"
+import Title from "./components/Title"
 import ProductsList from './components/ProductsList';
-import styled from 'styled-components'
-
-const Button = styled.button`
-margin-left: 20px;
-`
-const StyledDiv = styled.div`
-display: flex;
-justify-content: center;
-// max-width: 500px;
-`
+import styled from "styled-components"
+import { mediaSmall } from "./utils/screen(media)"
+import { useLocalStorage } from './components/useLocalStorage'
+import Form from "./Form"
 
 
 function App() {
-  const [newProduct, setNewProduct] = useState('');
+
   const defaultProducts = [
-    { name: 'milk', completed: false },
-    { name: 'juice', completed: false },
-    { name: 'eggs', completed: true },
+    { name: "milk", completed: false },
+    { name: "juice", completed: false },
+    { name: "eggs", completed: true },
   ]
-  const [products, setProducts] = useState(defaultProducts)
-
-  const handleClick = () => {
-    const newItem = { name: newProduct, completed: false }
-    const updatedProducts = [newItem, ...products]
-    setProducts(updatedProducts)
-    setNewProduct('')
-  }
-
+  const [products, setProducts] = useLocalStorage('products',defaultProducts)
   return (
-    <StyledDiv>
-      <form>
-        <Title>
-          Kate List
-    </Title>
-        <label>
-          New product:
-       <input type="text" value={newProduct} onChange={(event) => {
-            console.log(event.target.value)
-            setNewProduct(event.target.value)
-          }}
-
-          />
-          <Button type="button" onClick={handleClick} >Add
-       </Button>
-          <ProductsList products={products} setProductList={setProducts} />
-        </label>
-      </form>
-
-
-    </StyledDiv>
+    <MainWrapper>
+      <Title>Shopping List</Title>
+    <Form products={products} setProducts={setProducts} />
+    <ProductsList products={products} setProductList={setProducts} />
+    </MainWrapper>
   )
 }
 
-
-
 export default App
+
+const MainWrapper = styled.div`
+  margim: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 500px;
+  ${mediaSmall} {
+    display: flex;
+    justify-content: center;
+  }
+  h1 {
+    color: white;
+    text-align: center;
+    background-color: #0805f9;
+    margin-top: 0;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+  }
+`
