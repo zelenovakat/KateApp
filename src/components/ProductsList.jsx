@@ -2,12 +2,11 @@ import React, { useState } from "react"
 import { updateObjectInArray, deleteObjectInArray } from "../utils/helper"
 import styled from "styled-components"
 import ProductListItem from "./ProductListItem"
-import { Button } from "../Form"
 
-const ProductsList = props => {
+const ProductsList = (props) => {
   const { products, setProductList } = props
   const [isCompletedProducts, setIsCompletedProducts] = useState(false)
-  const deleteProduct = name => {
+  const deleteProduct = (name) => {
     const updatedProducts = deleteObjectInArray(products, name)
     setProductList(updatedProducts)
   }
@@ -16,8 +15,8 @@ const ProductsList = props => {
     setIsCompletedProducts(!isCompletedProducts)
   }
 
-  const clickOnProduct = name => {
-    const oneItem = products.find(item => {
+  const clickOnProduct = (name) => {
+    const oneItem = products.find((item) => {
       return name === item.name
     })
     // 1. Create new element with updates
@@ -36,7 +35,7 @@ const ProductsList = props => {
     return completed === false
   })
 
-  const mapProducts = items => {
+  const mapProducts = (items) => {
     return items.map(({ name, completed }, i) => {
       return (
         <ProductListItem
@@ -59,29 +58,39 @@ const ProductsList = props => {
       <StyledUl>{mapedNotCompletedProducts}</StyledUl>
       {isCompletedProducts && (
         <StyledUl>
-          <h1>Completed</h1>
+          {completedList.length > 0 && <h1>Completed</h1>}
           {mapedCompletedProducts}
         </StyledUl>
       )}
-
-      <ButtonWrapper>
-        <Button type="button" onClick={toogleCompletedProducts}>
-          {isCompletedProducts === false ? "Show completed" : "Hide"}
-        </Button>
-      </ButtonWrapper>
+      {completedList.length > 0 && (
+        <ButtonWrapper>
+          <Button type="button" onClick={toogleCompletedProducts}>
+            {isCompletedProducts === false ? "Show completed" : "Hide"}
+          </Button>
+        </ButtonWrapper>
+      )}
     </>
   )
 }
 
 export default ProductsList
-
+const Button = styled.button`
+  min-width: 250px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid gray;
+  background-color: lavender;
+`
 const StyledUl = styled.ul`
   padding-left: 0;
   h1 {
-    color: black;
+    color: #000;
     text-align: center;
-    background-color: #0805f9;
     margin-top: 0;
+    font-weight: normal;
+    font-size: 25px;
+    padding-bottom: 20px;
   }
 
   li {
@@ -89,15 +98,14 @@ const StyledUl = styled.ul`
     justify-content: space-between;
     background-color: white;
     color: #000000;
-    border: 2px solid #000;
-    margin: 10px;
+    margin: 3px;
+    min-width: 300px;
     &:hover {
       background: #0805f9;
       color: #fff;
       text-decoration: none;
     }
     p {
-      font-weight: bold;
       padding-left: 16px;
       flex: 1;
     }

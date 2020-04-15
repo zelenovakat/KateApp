@@ -1,11 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
-const Title = (props) => {
+const Title = props => {
   const { children } = props
-  return (
-    <h1>{children}</h1>
-  )
+  return <TitlePrimary>{children}</TitlePrimary>
 }
 
 Title.propTypes = {
@@ -14,7 +13,7 @@ Title.propTypes = {
 
 export default Title
 
-
-
-
-
+const TitlePrimary = styled.h1`
+  font-size: 25px;
+  font-weight: normal;
+`

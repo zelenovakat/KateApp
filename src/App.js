@@ -1,26 +1,24 @@
-import React from 'react'
+import React from "react"
 import "./App.css"
 import Title from "./components/Title"
-import ProductsList from './components/ProductsList';
+import ProductsList from "./components/ProductsList"
 import styled from "styled-components"
 import { mediaSmall } from "./utils/screen(media)"
-import { useLocalStorage } from './components/useLocalStorage'
+import { useLocalStorage } from "./components/useLocalStorage"
 import Form from "./Form"
 
-
 function App() {
-
   const defaultProducts = [
     { name: "milk", completed: false },
     { name: "juice", completed: false },
-    { name: "eggs", completed: true },
+    { name: "eggs", completed: true }
   ]
-  const [products, setProducts] = useLocalStorage('products',defaultProducts)
+  const [products, setProducts] = useLocalStorage("products", defaultProducts)
   return (
     <MainWrapper>
       <Title>Shopping List</Title>
-    <Form products={products} setProducts={setProducts} />
-    <ProductsList products={products} setProductList={setProducts} />
+      <Form products={products} setProducts={setProducts} />
+      <ProductsList products={products} setProductList={setProducts} />
     </MainWrapper>
   )
 }
@@ -28,7 +26,8 @@ function App() {
 export default App
 
 const MainWrapper = styled.div`
-  margim: 0 auto;
+  padding-top: 40px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -38,9 +37,8 @@ const MainWrapper = styled.div`
     justify-content: center;
   }
   h1 {
-    color: white;
+    color: #000;
     text-align: center;
-    background-color: #0805f9;
     margin-top: 0;
   }
   div {
