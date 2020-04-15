@@ -19,12 +19,8 @@ const ProductsList = (props) => {
     const oneItem = products.find((item) => {
       return name === item.name
     })
-    // 1. Create new element with updates
     const updatedItem = { ...oneItem, completed: !oneItem.completed }
-
-    // 2. Get new updated full products list
     const updatedProducts = updateObjectInArray(products, updatedItem)
-    // 3. Set new state
     setProductList(updatedProducts)
   }
 
