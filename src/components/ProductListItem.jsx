@@ -1,14 +1,15 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+import { mediaSmall } from "../utils/screen(media)"
 import styled from "styled-components"
-const ProductListItem = props => {
+const ProductListItem = (props) => {
   const { name, completed, clickOnProduct, deleteProduct } = props
   return (
-    <li
+    <List
       key={name}
       style={{
-        textDecoration: completed ? "line-through" : "none"
+        textDecoration: completed ? "line-through" : "none",
       }}>
       <p
         onClick={() => {
@@ -21,11 +22,24 @@ const ProductListItem = props => {
       <DeleteButton onClick={() => deleteProduct(name)}>
         <FontAwesomeIcon icon={faTrashAlt} />
       </DeleteButton>
-    </li>
+    </List>
   )
 }
 
 export default ProductListItem
+const List = styled.li`
+  border-radius: 7px;
+  max-width: 318px;
+
+  p {
+    word-break: break-word;
+  }
+`
 const DeleteButton = styled.button`
-  color: #413e3ed4;
+  cursor: pointer;
+  color: #6f6565;
+  font-size: 15px;
+  ${mediaSmall} {
+    border: none;
+  }
 `

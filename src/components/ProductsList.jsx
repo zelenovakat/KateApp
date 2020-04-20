@@ -71,12 +71,16 @@ const ProductsList = (props) => {
 
 export default ProductsList
 const Button = styled.button`
+  cursor: pointer;
   min-width: 250px;
   padding: 12px;
   font-size: 14px;
   font-weight: bold;
   border: 1px solid gray;
-  background-color: lavender;
+  background-color: #3c96d39e;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
 `
 const StyledUl = styled.ul`
   padding-left: 0;
@@ -90,6 +94,7 @@ const StyledUl = styled.ul`
   }
 
   li {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -97,9 +102,9 @@ const StyledUl = styled.ul`
     margin: 3px;
     min-width: 300px;
     &:hover {
-      background: #0805f9;
-      color: #fff;
-      text-decoration: none;
+      p {
+        opacity: 0.5;
+      }
     }
     p {
       padding-left: 16px;

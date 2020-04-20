@@ -3,10 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHandPointer } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
 
-const Form = props => {
+const Form = (props) => {
   const { products, setProducts } = props
   const [newProduct, setNewProduct] = useState("")
+
   const handleClick = () => {
+    if (!newProduct) return null
+    console.log("newProduct", newProduct)
+
     const newItem = { name: newProduct, completed: false }
     const updatedProducts = [newItem, ...products]
     setProducts(updatedProducts)
@@ -18,8 +22,7 @@ const Form = props => {
         <Input
           type="text"
           value={newProduct}
-          onChange={event => {
-            console.log(event.target.value)
+          onChange={(event) => {
             setNewProduct(event.target.value)
           }}
         />
@@ -49,9 +52,15 @@ const Input = styled.input`
   min-width: 250px;
   border: 1px solid gray;
   font-size: 18px;
+  padding-left: 15px;
 `
 const InputButton = styled(Button)`
+  cursor: pointer;
   border-left: 0;
   border: 1px solid gray;
-  background-color: lavender;
+  background-color: #3c96d39e;
+  svg {
+    font-size: 20px;
+    color: #fff;
+  }
 `
