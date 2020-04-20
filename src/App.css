@@ -1,8 +1,7 @@
 body {
   display: flex;
   justify-content: center;
-  background: rgba(244, 67, 54, 0.06);
-
+  background: rgb(234, 234, 234);
   min-height: 100vh;
   border-top: 4px solid #d6d6d6;
   border-right: 4px solid #d6d6d6;
